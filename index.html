@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A private vault of memories — photos, videos and wishes, collected for one birthday.">
+<title>Birthday:Vault — A Celebration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FFF7EC'/%3E%3Ccircle cx='8' cy='9' r='2.4' fill='%23FF5C5C'/%3E%3Ccircle cx='24' cy='7' r='2' fill='%232DD4BF'/%3E%3Ccircle cx='27' cy='22' r='2.4' fill='%23A78BFA'/%3E%3Ccircle cx='5' cy='23' r='2' fill='%23FFD60A'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='14' font-weight='bold' fill='%23FF5C5C' text-anchor='middle'%3EBV%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a class="brand" href="#hero" aria-label="Back to top">
+      <span class="brand-mark">BV</span>
+      <span class="brand-name">Birthday<span class="brand-dim">:</span>Vault</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#reel">Reel</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#story">Story</a>
+      <a href="#wishes">Wishes</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-ghost btn-export" id="btnExport" title="Export backup (JSON)" aria-label="Export backup">Export</button>
+      <button class="btn btn-primary" id="btnAddTop">+ Add Memory</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" id="hero">
+    <div class="blob blob-a" aria-hidden="true"></div>
+    <div class="blob blob-b" aria-hidden="true"></div>
+    <div class="blob blob-c" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="eyebrow" id="heroEyebrow">A celebration of</p>
+      <h1 class="hero-name" id="heroName">Another<br><em>Year of You</em></h1>
+      <div class="hero-meta">
+        <span class="hero-badge" id="heroBadge">✦ Turning 27</span>
+        <span class="hero-date" id="heroDate">· the whole story below</span>
+      </div>
+      <p class="hero-sub" id="heroSub">Photos, videos and wishes — every frame of the story so far, vaulted in one place.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary btn-lg" id="btnAddHero">+ Add a Memory</button>
+        <a class="btn btn-ghost btn-lg" href="#reel">Watch the Reel ▶</a>
+      </div>
+      <p class="hero-count" id="heroCount"></p>
+    </div>
+    <div class="spotlight" id="spotlight" aria-label="Animated showcase of memories"></div>
+    <div class="spark-field" id="sparkField" aria-hidden="true"></div>
+    <a class="scroll-hint" href="#stats" aria-label="Scroll down"><span></span></a>
+  </section>
+
+  <!-- ══════════ MARQUEE ══════════ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>MANY HAPPY RETURNS</span><span class="marquee-star">✦</span>
+      <span>ANOTHER LAP AROUND THE SUN</span><span class="marquee-star">✦</span>
+      <span>CAKE · CANDLES · CONFETTI</span><span class="marquee-star">✦</span>
+      <span>MORE MEMORIES TO MAKE</span><span class="marquee-star">✦</span>
+    </div>
+  </div>
+
+  <!-- ══════════ STATS ══════════ -->
+  <section class="stats" id="stats">
+    <div class="stat-block">
+      <span class="stat-num" id="statYears">—</span>
+      <span class="stat-label">years around the sun</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-num" id="statPhotos">0</span>
+      <span class="stat-label">photos vaulted</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-num" id="statVideos">0</span>
+      <span class="stat-label">videos captured</span>
+    </div>
+    <div class="stat-block">
+      <span class="stat-num" id="statWishes">0</span>
+      <span class="stat-label">wishes written</span>
+    </div>
+  </section>
+
+  <!-- ══════════ REEL — animated showcase ══════════ -->
+  <section class="section section-reel" id="reel">
+    <div class="section-head">
+      <p class="section-kicker">✦ The Showcase</p>
+      <h2 class="section-title">The <em>reel</em></h2>
+      <p class="section-sub">Every memory, rolling by on its own. Hover to pause — click any frame to open it.</p>
+    </div>
+    <div class="reel" id="reelWrap">
+      <button class="reel-arrow reel-prev" id="reelPrev" aria-label="Previous frame">‹</button>
+      <div class="reel-viewport" id="reelViewport">
+        <div class="reel-track" id="reelTrack"></div>
+      </div>
+      <button class="reel-arrow reel-next" id="reelNext" aria-label="Next frame">›</button>
+    </div>
+    <div class="empty-state empty-state-small" id="reelEmpty" hidden>
+      <p>Add memories and they'll start rolling here.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ GALLERY ══════════ -->
+  <section class="section" id="gallery">
+    <div class="section-head">
+      <p class="section-kicker">01 — The Vault</p>
+      <h2 class="section-title">Moments, <em>kept</em></h2>
+      <p class="section-sub">Every photo and video lives here. Add your own, or drop a Google Drive link — it embeds on the spot.</p>
+    </div>
+    <div class="gallery-toolbar">
+      <div class="filters" role="tablist" aria-label="Filter gallery">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="photo" role="tab" aria-selected="false">Photos</button>
+        <button class="filter-btn" data-filter="video" role="tab" aria-selected="false">Videos</button>
+      </div>
+      <div class="gallery-tools">
+        <button class="btn btn-ghost btn-sm" id="btnClearSamples" title="Remove the sample artwork and start fresh">Clear samples</button>
+        <button class="btn btn-ghost btn-sm" id="btnClearAll" title="Delete every item in the vault">Empty vault</button>
+      </div>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+    <div class="empty-state" id="galleryEmpty" hidden>
+      <div class="empty-art" aria-hidden="true">✦</div>
+      <h3>The vault is waiting</h3>
+      <p>Drop in the first photo or video — or paste a Google Drive link.</p>
+      <button class="btn btn-primary" id="btnEmptyAdd">+ Add the first memory</button>
+    </div>
+  </section>
+
+  <!-- ══════════ STORY / TIMELINE ══════════ -->
+  <section class="section section-dark" id="story">
+    <div class="section-head">
+      <p class="section-kicker">02 — The Story</p>
+      <h2 class="section-title">Year by <em>year</em></h2>
+      <p class="section-sub">The vault auto-arranges your memories on a timeline, so the story reads top to bottom.</p>
+    </div>
+    <div class="timeline" id="timeline"></div>
+    <div class="empty-state empty-state-small" id="timelineEmpty" hidden>
+      <p>Nothing on the timeline yet — add a memory with a date and it appears here.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ VIDEOS ══════════ -->
+  <section class="section" id="videos">
+    <div class="section-head">
+      <p class="section-kicker">03 — The Hall</p>
+      <h2 class="section-title">In <em>motion</em></h2>
+      <p class="section-sub">The moving pictures. Videos you upload play right here; Drive video links embed as players.</p>
+    </div>
+    <div class="video-hall" id="videoHall"></div>
+    <div class="empty-state empty-state-small" id="videosEmpty" hidden>
+      <p>No videos yet — upload one or paste a Google Drive video link.</p>
+      <button class="btn btn-primary btn-sm" id="btnEmptyVideo">+ Add a video</button>
+    </div>
+  </section>
+
+  <!-- ══════════ WISHES ══════════ -->
+  <section class="section section-dark" id="wishes">
+    <div class="section-head">
+      <p class="section-kicker">04 — The Wall</p>
+      <h2 class="section-title">Leave a <em>wish</em></h2>
+      <p class="section-sub">Sign the wall. Every wish is kept in this vault, forever.</p>
+    </div>
+    <div class="wish-layout">
+      <form class="wish-form" id="wishForm">
+        <label for="wishName">Your name</label>
+        <input type="text" id="wishName" name="name" maxlength="40" placeholder="Who's writing?" autocomplete="name" required>
+        <label for="wishMsg">Your wish</label>
+        <textarea id="wishMsg" name="message" maxlength="400" rows="4" placeholder="Happy birthday, and then some…" required></textarea>
+        <button type="submit" class="btn btn-primary">Send the wish ✦</button>
+      </form>
+      <div class="wish-wall" id="wishWall"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark">BV</span>
+      <span>Birthday:Vault</span>
+    </div>
+    <p class="footer-note">Everything lives in your browser — IndexedDB, no servers, no Supabase. Your memories never leave this device unless you export them.</p>
+    <div class="footer-actions">
+      <button class="btn btn-ghost btn-sm" id="btnImport">Import backup</button>
+      <button class="btn btn-ghost btn-sm" id="btnExport2">Export backup</button>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ UPLOAD MODAL ══════════ -->
+<div class="modal-scrim" id="uploadModal" hidden role="dialog" aria-modal="true" aria-labelledby="uploadTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h3 id="uploadTitle">Add a Memory</h3>
+        <p class="modal-sub">Upload files or embed from Google Drive. Stored locally — no servers.</p>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-tabs" role="tablist">
+      <button class="modal-tab active" data-tab="upload" role="tab" aria-selected="true">Upload files</button>
+      <button class="modal-tab" data-tab="drive" role="tab" aria-selected="false">Google Drive link</button>
+    </div>
+
+    <!-- upload tab -->
+    <div class="tab-panel" id="tabUpload">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload photos or videos">
+        <div class="dz-icon" aria-hidden="true">↑</div>
+        <p class="dz-title">Drag photos & videos here</p>
+        <p class="dz-sub">or <span class="dz-link">browse files</span> — JPG, PNG, WebP, MP4, WebM</p>
+        <input type="file" id="fileInput" accept="image/*,video/*" multiple hidden>
+      </div>
+      <div class="upload-queue" id="uploadQueue"></div>
+      <div class="modal-foot">
+        <p class="queue-note" id="queueNote">Photos are auto-compressed. Videos are stored as-is (keep them under ~100&nbsp;MB).</p>
+        <button class="btn btn-primary" id="btnSaveAll" disabled>Save to vault</button>
+      </div>
+    </div>
+
+    <!-- drive tab -->
+    <div class="tab-panel" id="tabDrive" hidden>
+      <label for="driveLink">Google Drive link</label>
+      <input type="url" id="driveLink" placeholder="https://drive.google.com/file/d/…/view" spellcheck="false">
+      <div class="drive-kind">
+        <span>It's a…</span>
+        <label class="radio-pill"><input type="radio" name="driveKind" value="photo" checked><span>Photo</span></label>
+        <label class="radio-pill"><input type="radio" name="driveKind" value="video"><span>Video</span></label>
+      </div>
+      <label for="driveTitle">Caption</label>
+      <input type="text" id="driveTitle" maxlength="80" placeholder="e.g. The cake moment (optional)">
+      <label for="driveDate">Date</label>
+      <input type="date" id="driveDate">
+      <div class="drive-preview" id="drivePreview" hidden></div>
+      <div class="modal-foot">
+        <p class="queue-note">Photos embed via Drive's thumbnail CDN; videos embed as a player. Anyone with the link can view them here.</p>
+        <button class="btn btn-primary" id="btnAddDrive">Embed from Drive</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ LIGHTBOX ══════════ -->
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Media viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close viewer">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <div class="lb-stage" id="lbStage"></div>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+  <div class="lb-caption" id="lbCaption"></div>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="app.js"></script>
+<script src="ui-gallery.js"></script>
+<script src="ui-lightbox.js"></script>
+<script src="ui-upload.js"></script>
+<script src="ui-wishes.js"></script>
+<script src="ui-reel.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
