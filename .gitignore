@@ -1,7 +1,37 @@
-# screenshots / previews — not part of the build
-preview-*.png
-*.log
+# Dependencies
+node_modules/
 
-# os junk
+# Build outputs
+dist/
+build/
+.next/
+.nuxt/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Vercel
+.vercel
+
+# Preview images (large files)
+preview-*.png
+
+# Environment
+.env
+.env.local
+.env.production.local
+
+# Cache
+.cache/
+*.tsbuildinfo

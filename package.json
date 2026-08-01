@@ -1,0 +1,22 @@
+{
+  "name": "birthday-vault",
+  "version": "1.0.0",
+  "description": "A private vault of memories — photos, videos and wishes, collected for one birthday",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "node build.js",
+    "start": "npx serve .",
+    "vercel-build": "npm run build"
+  },
+  "keywords": [
+    "birthday",
+    "memories",
+    "vault",
+    "static-site"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}

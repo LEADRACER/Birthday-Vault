@@ -13,6 +13,21 @@ var BV_CONFIG = {
   birthday: ""
 };
 
+/* ── Load config from config.js (injected at build time) ── */
+function loadBuildConfig() {
+  if (window.BV_ENV_CONFIG) {
+    if (window.BV_ENV_CONFIG.name && window.BV_ENV_CONFIG.name !== "__BV_NAME__") {
+      BV_CONFIG.name = window.BV_ENV_CONFIG.name;
+    }
+    if (window.BV_ENV_CONFIG.birthday && window.BV_ENV_CONFIG.birthday !== "__BV_BIRTHDAY__") {
+      BV_CONFIG.birthday = window.BV_ENV_CONFIG.birthday;
+    }
+  }
+}
+
+/* Call immediately so BV_CONFIG is ready for applyConfig() */
+loadBuildConfig();
+
 var BV = {
   items: [],
   wishes: [],
