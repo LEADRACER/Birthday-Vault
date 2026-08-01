@@ -35,3 +35,4 @@ preview-*.png
 # Cache
 .cache/
 *.tsbuildinfo
+config.js
